@@ -23,7 +23,7 @@ Things you may want to cover:
 
 * ...
 
-## membersテーブル
+### Membersテーブル
 
 |Column|Type|Options|
 |------|----|-------|
@@ -37,7 +37,7 @@ Things you may want to cover:
 
 
 
-###Messagesテーブル
+### Messagesテーブル
 
 |Column|Type|Option|
 |------|----|------|
