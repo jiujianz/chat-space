@@ -35,8 +35,8 @@
 ### Accountsテーブル
 |Column|Type|Option|
 |------|----|------|
-|name|char|null: false, unique: true
-|email|char|null: false, unique: true
+|user_id|integer|null: false, unique: true
+|email_id|char|null: false, unique: true
 
 ### associationテーブル
 - belongs_to :name
