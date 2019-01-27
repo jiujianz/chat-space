@@ -32,12 +32,28 @@
 
 
 
-### Accountsテーブル
+### Usersテーブル
 |Column|Type|Option|
 |------|----|------|
-|user_id|integer|null: false, unique: true
-|email_id|char|null: false, unique: true
+|name|char|null: false, unique: true
+|email|char|null: false, unique: true
+|password|char|null: false, unique: true
+|group_id|integer|foreign_key: true
+
 
 ### associationテーブル
 - belongs_to :name
 - belongs_to :email
+- belongs_to :password_id
+- has_many   :group_id
+
+
+
+
+### Groupsテーブル
+|Column|Type|Option|
+|------|----|------|
+|user_id|integer|foreign_key: true
+
+
+
