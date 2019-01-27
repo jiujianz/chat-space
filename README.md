@@ -26,6 +26,7 @@
 
 ### association
 - belongs_to :user
+- belongs_to :groups
 
 
 
@@ -46,12 +47,12 @@
 ### Groupsテーブル
 |Column|Type|Option|
 |------|----|------|
-|user_id|integer|foreign_key: true
-|name|char|null: false, foreign_key: true
+|name|char|null: false, foreign_key: true|
 
 
 ### association
 - has_many :members
+- has_many :users
 
 
 
