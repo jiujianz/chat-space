@@ -1,6 +1,6 @@
 # README
 
-### Membersテーブル
+### Group_Usersテーブル
 
 |Column|Type|Options|
 |------|----|-------|
@@ -18,9 +18,6 @@
 
 |Column|Type|Option|
 |------|----|------|
-|body|text|null: false, foreign_key: true|
-|image|string|null: false, foreign_key: true|
-|time|timestamp|foreign_key: true|
 |group_id|integer|null: false, foreign_key: true|
 |user_id|integer|null: false, foreign_key: true|
 
@@ -33,15 +30,15 @@
 ### Usersテーブル
 |Column|Type|Option|
 |------|----|------|
-|name|char|null: false, unique: true|
-|email|char|null: false, unique: true
+|name|string|null: false, unique: true, index :true
+|email|string|null: false, unique: true,
 |password|char|null: false, unique: true
 
 
 ### association
 - has_many :messages
-- has_many :members
-- has_many :groups
+- has_many :group_users
+- has_many :groups, through: :group_users
 
 
 ### Groupsテーブル
@@ -51,8 +48,8 @@
 
 
 ### association
-- has_many :members
-- has_many :users
+- has_many :group_users
+- has_many :users, through: :group_users
 
 
 
