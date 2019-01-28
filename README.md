@@ -18,6 +18,8 @@
 
 |Column|Type|Option|
 |------|----|------|
+|body|text|null: false, foreign_key: true|
+|image|string|null: false, foreign_key: true|
 |group_id|integer|null: false, foreign_key: true|
 |user_id|integer|null: false, foreign_key: true|
 
@@ -30,9 +32,9 @@
 ### Usersテーブル
 |Column|Type|Option|
 |------|----|------|
-|name|string|null: false, unique: true, index :true
-|email|string|null: false, unique: true,
-|password|char|null: false, unique: true
+|name|string|null: false, unique: true, index :true|
+|email|string|null: false, unique: true|
+|password|string|null: false, unique: true|
 
 
 ### association
@@ -44,7 +46,7 @@
 ### Groupsテーブル
 |Column|Type|Option|
 |------|----|------|
-|name|char|null: false, foreign_key: true|
+|name|string|null: false, foreign_key: true|
 
 
 ### association
