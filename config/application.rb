@@ -8,12 +8,19 @@ Bundler.require(*Rails.groups)
 
 module ChatSpace
   class Application < Rails::Application
-  	config.fenerators do |g|
-  		g.stylesheets false
-  		g.javascripts false
-  		g.helper false
-  		g.test_framework false
-  	end
+  	# config.fenerators do |g|
+  	# 	g.stylesheets false
+  	# 	g.javascripts false
+  	# 	g.helper false
+  	# 	g.test_framework false
+  	# end
+    config.generators do |g|
+      g.javascripts false
+      g.helper true
+      g.test_framework false
+      config.i18n.default_locale = :ja
+      config.time_zone = 'Tokyo'
+    end
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
