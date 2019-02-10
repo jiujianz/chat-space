@@ -1,28 +1,37 @@
-%div{class: "message"}
-  %div{class: "message__group--done"}
-    %p.done--text チャットグループが作成されました。
-  %div{class: "message__group"}
-    %p.group--name sample
-    %p.group--member Members : seo pan
-    %button.message__edit
-      %p.edit--box Edit
-  %div{class: "message__user"}
-    %p.user--name Abema
-    =link_to "https://www.google.co.jp/" do
-      %i.fa.fa-cog.fa-lg
-    =link_to "https://www.google.co.jp/" do
-      %i.fa.fa-edit.fa-lg
-  %div{class: "message__group--chat"}
-    %p.group--chat--name group
-    %p.group--text メッセージはまだありません
-  %div{class: "message__contents"}
-    %p.the__messages messages
-  %div{class: "message__type"}
-    %input.type--text{:placeholder => "type a message"}
-      %label.fa.fa-photo.fa-lg
-        %input.datefile{:type => "file"}
-        %label.upload-label{for: "upload-icon"}
-          %i.fa.fa-picture-o
-          / = f.file_field :image, id: "upload-icon"
-    %button.message__send
-      %p.box Send
+.message
+  .message__group--done
+    %p.message__group--done--text チャットグループが作成されました。
+  .message__left--block
+    .message__left--block--user
+      .message__left--block--user--contents
+        %p.user__name Abema
+        %ul.menu__edit--icon
+          =link_to "https://www.google.co.jp/" do
+            %i.fa.fa-cog.fa-lg
+          =link_to "https://www.google.co.jp/" do
+            %i.fa.fa-edit.fa-lg
+    .message__left--block--groups
+      .message__left--block--groups__chat
+        %p.group--name group
+        %p.group--text メッセージはまだありません
+  .message__right--block
+    .message__right--block--current__group
+      .message__right--block--current__group--member
+        %p.group--name the chat team
+        %p.group--team Members : Abema Ameba
+      .group__edit
+        =link_to "https://www.google.co.jp/" do
+          %p.edit--text Edit
+    .message__right--block--chat__box
+      .message__right--block--chat__box__messages
+        %p.the__messages messages
+        %p.the__messages--info 2019/02/09(Sat) 15:33:32
+        %p.users__message Hello World!!
+    .message__right--block__typing
+      %input.message__right--block__typing--form{:placeholder => "type a message"}
+      %label.upload-label{for: "upload-icon"}
+        %i.fa.fa-picture-o
+        = file_field '', :image, id: "upload-icon"
+      =link_to "https://www.google.co.jp/" do
+        %button.message__send
+          %p.box Send
