@@ -1,0 +1,14 @@
+.message__right--block--chat__box
+	.message__right--block--chat__box__messages
+		%p.the__messages
+			= message.user.name
+		%p.the__messages--info
+			= message.created_at.strftime("%Y/%m/%d %H:%M")
+		%p.users__message
+			- if message.content.present?
+				%p.lower-message__content
+					= message.content
+			= image_tag message.image.url, class: 'lower-message__image' if message.image.present?
+
+
+/ #分からない（メンターに確認）

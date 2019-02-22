@@ -1,0 +1,16 @@
+.message__right--block
+  .message__right--block--current__group
+    .message__right--block--current__group--member
+      %p.group--name the chat team
+      %p.group--team Members : Abema Ameba
+    .group__edit
+      %p.edit--text Edit
+  = render @messages
+  .message__right--block__typing
+    = form_for [@group, @message] do |f|
+      = f.text_field :content, class: 'form__image', placeholder: 'type a message'
+      .form__mask
+        = f.label :image, class: 'icon' do
+          = fa_icon 'picture-o', class: 'icon'
+          = f.file_field :image, class: "hidden"
+      = f.submit 'Send', class: 'form__submit'
