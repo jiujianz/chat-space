@@ -12,7 +12,6 @@
         %p.edit--text Edit
   .messages
     = render @messages
-  = render @messages
   .message__right--block__typing
     = form_for [@group, @message] do |f|
       = f.text_field :content, class: 'form__image', placeholder: 'type a message'
