@@ -1,17 +1,11 @@
 .message__right--block
   .message__right--block--current__group
     .message__right--block--current__group--member
-      %p.group--name
-        = @group.name
-      %p.group--team member:
-      %p.a
-        - @group.users.each do |user|
-          = user.name
+      %p.group--name the chat team
+      %p.group--team Members : Abema Ameba
     .group__edit
-      = link_to edit_group_path(@group) do
-        %p.edit--text Edit
-  .messages
-    = render @messages
+      %p.edit--text Edit
+  = render @messages
   .message__right--block__typing
     = form_for [@group, @message] do |f|
       = f.text_field :content, class: 'form__image', placeholder: 'type a message'

@@ -84,15 +84,10 @@
                     color: #333333;
                     margin-bottom: 15px;
                 }
-                .a{
-                    font-size: 12px;
-                    color: #999999;
-                    display: inline-block;
-                }
                 .group--team{
                     font-size: 12px;
                     color: #999999;
-                    display: inline-block;
+
                 }
             }
             .group__edit{
@@ -111,14 +106,12 @@
                 }
             }
         }
-        .messages{
-            overflow: scroll;
-            height: calc(100vh - 190px);
-        }
         &--chat__box{
-            padding: 46px 40px;
+            height: 67vh;
+            padding-right: 40px;
+            padding-left: 40px;
+            padding-top: 40px;
             background-color: #aaaaaa;
-            overflow: scroll;
             &__messages{
                 padding-bottom: 40px;
                 .the__messages{
@@ -171,4 +164,3 @@
 
     }
 }
-
