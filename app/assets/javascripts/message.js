@@ -1,24 +1,24 @@
 $(function() {
-	function buildHTML(content){
-		var html = `<p the__messages>
-			          <%= message.user.name %>
-			        </p>
-			        <p he__messages--info
-			          <%= message.created_at.strftime("%Y/%m/%d %H:%M") %>
-			        </p>
-			        <p users__message
-			          <% if message.content.present? %>
-			        </P>
-			        <P lower-message__content
-					  <%= message.content %>
-			          <%= image_tag message.image.url, class: 'lower-message__image' if message.image.present? %>
-			        </p>`
+	function buildHTML(message){
+        var x = (message.image) ? `<img src="${message.image}" >` :``;
+		var html = `
+		            <div class= "message__right--block--chat__box">
+		              <div class= "message__right--block--chat__box__messages">
+			            <p class="the__messages">${message.user_name}
+			            </p><p class= "the__messages--info">${message.time}
+				        </p>
+				        <p class= "lower-message__content">${message.content}
+				        </p>
+				        <P class= "lower-message__content">${x}
+				        </p>
+				      </div>
+				    </div>`
 	    return html
 	}
 	$('#new_message').on('submit', function(e){
 		e.preventDefault();
 		var formData = new FormData(this);
-	    var href = window.location.href + '/message'
+	    var href = window.location.pathname
 	    $.ajax({
 	      url: href,
 	      type: "POST",
@@ -29,8 +29,9 @@ $(function() {
         })
         .done(function(data){
         	var html = buildHTML(data);
-        	$('.message__right--block--chat__box__messages').append(html)
-        	$('.new_message').val('')
+        	$('.messages').append(html)
+        	$('#message_content').val('')
+	        $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight}, 'fast');
         })
         .fail(function(){
         	alert('error');
