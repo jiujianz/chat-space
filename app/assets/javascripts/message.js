@@ -1,5 +1,5 @@
 $(function() {
-	function buildHTML(message){
+	function buildSendMessageHTML(message){
         var x = (message.image) ? `<img src="${message.image}" >` :``;
 		var html = `
 		            <div class= "message__right--block--chat__box">
@@ -27,8 +27,8 @@ $(function() {
 	      processData: false,
           contentType: false
         })
-        .done(function(data){
-        	var html = buildHTML(data);
+        .done(function(message){
+        	var html = buildSendMessageHTML(message);
         	$('.messages').append(html)
         	$('#message_content').val('')
 	        $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight}, 'fast');
