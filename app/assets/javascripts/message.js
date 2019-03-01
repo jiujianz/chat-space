@@ -27,8 +27,8 @@ $(function() {
 	      processData: false,
           contentType: false
         })
-        .done(function(message){
-        	var html = buildSendMessageHTML(message);
+        .done(function(user_message){
+        	var html = buildSendMessageHTML(user_message);
         	$('.messages').append(html)
         	$('#message_content').val('')
 	        $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight}, 'fast');
