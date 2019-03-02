@@ -1,6 +1,6 @@
 $(function() {
 	function buildSendMessageHTML(message){
-        var x = (message.image) ? `<img src="${message.image}" >` :``;
+        var api_message = (message.image) ? `<img src="${message.image}" >` :``;
 		var html = `
 		            <div class= "message__right--block--chat__box">
 		              <div class= "message__right--block--chat__box__messages">
@@ -9,7 +9,7 @@ $(function() {
 				        </p>
 				        <p class= "lower-message__content">${message.content}
 				        </p>
-				        <P class= "lower-message__content">${x}
+				        <P class= "lower-message__content">${api_message}
 				        </p>
 				      </div>
 				    </div>`
