@@ -13,7 +13,7 @@ function appendSearchUserResult(user){
 
 var add_list = $("#chat-group-users");
 
-function addUserBtn(name,id){
+function apendUserToGroupMember(name,id){
 	var html =  `<div class='chat-group-user clearfix js-chat-member' id=${id}>
 				  <input name='group[user_ids][]' type='hidden' value=${id}>
 				  <p class='chat-group-user__name'>${name}</p>
@@ -61,7 +61,7 @@ function appendErrMsgToHTML(msg){
         // 追加ボタンのhtmlからattrメソッドでnameを所得
 		var id = $("a").attr("data-user-id");
 		// 追加ボタンのhtmlからattrメソッドでidを所得
-		addUserBtn(name, id);
+		apendUserToGroupMember(name, id);
 		$(this).parent().remove();
 	})
 	$("#chat-group-users").on("click",".chat-group-user__btn--remove",function() {
