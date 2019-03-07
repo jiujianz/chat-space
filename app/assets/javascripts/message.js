@@ -17,7 +17,7 @@ $(function() {
 	}
 	$('#new_message').on('submit', function(e){
 		e.preventDefault();
-		var formData = new FormData(this);
+		  var formData = new FormData(this);
 	    var href = window.location.pathname
 	    $.ajax({
 	      url: href,
@@ -36,6 +36,6 @@ $(function() {
         .fail(function(){
         	alert('error');
         })
-	})
+	  })
 
 })
