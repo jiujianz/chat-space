@@ -68,4 +68,3 @@ function appendErrMsgToHTML(msg){
 		$(this).parent().remove();
 	})
 });
-
