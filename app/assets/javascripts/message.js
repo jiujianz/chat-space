@@ -1,5 +1,5 @@
 $(function() {
-	function DisplayAllMessages(message){
+	function AllMessagesHTML(message){
         var api_message = (message.image) ? `<img src="${message.image}" >` :``;
 		var html = `
 		            <div class= "message__right--block--chat__box">
@@ -16,9 +16,9 @@ $(function() {
 	    return html
 	}
   $(function(){
-    setInterval(UpdateOtherUsersMessage, 5000);
+    setInterval(UpdateMessageDisplay, 5000);
   });
-  function UpdateOtherUsersMessage(){
+  function UpdateMessageDisplay(){
     if($('.messages')[0]){
       var message_id = $('.messages:last').data('id');
     } else {
@@ -32,9 +32,9 @@ $(function() {
       processData: false,
         contentType: false
     })
-    .always(function(anotherUserSend_message){
-      $.each(anotherUserSend_message, function(i,anotherUserSend_message){
-        DisplayAllMessages(anotherUserSend_message);
+    .always(function(new_message){
+      $.each(new_message, function(i,new_message){
+        AllMessagesHTML(new_message);
       });
     });
   }
@@ -52,7 +52,7 @@ $(function() {
           contentType: false
       })
         .done(function(userSend_message){
-        	var html = DisplayAllMessages(userSend_message);
+        	var html = AllMessagesHTML(userSend_message);
         	$('.messages').append(html)
         	$('#message_content').val('')
 	        $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight}, 'fast');
