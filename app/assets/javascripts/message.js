@@ -1,5 +1,5 @@
 $(function() {
-	function buildSendMessageHTML(message){
+	function buildMessageHTML(message){
         var api_message = (message.image) ? `<img src="${message.image}" >` :``;
 		var html = `
 		            <div class= "message__right--block--chat__box">
@@ -15,6 +15,30 @@ $(function() {
 				    </div>`
 	    return html
 	}
+  $(function(){
+    setInterval(UpdateMessageDisplay, 5000);
+  });
+  function UpdateMessageDisplay(){
+    if($('.messages')[0]){
+      var message_id = $('.messages:last').data('id');
+    } else {
+      var message_id = 0
+    }
+    $.ajax({
+      url: location.href,
+      type: 'GET',
+      data: { id: message_id },
+      dataType: 'json',
+      processData: false,
+        contentType: false
+    })
+    .always(function(new_message){
+      $.each(new_message, function(i,new_message){
+        buildMessageHTML(new_message);
+      });
+    });
+  }
+
 	$('#new_message').on('submit', function(e){
 		e.preventDefault();
 		  var formData = new FormData(this);
@@ -26,9 +50,9 @@ $(function() {
 	      dataType: 'json',
 	      processData: false,
           contentType: false
-        })
-        .done(function(user_message){
-        	var html = buildSendMessageHTML(user_message);
+      })
+        .done(function(userSend_message){
+        	var html = buildMessageHTML(userSend_message);
         	$('.messages').append(html)
         	$('#message_content').val('')
 	        $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight}, 'fast');
