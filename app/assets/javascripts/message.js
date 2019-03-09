@@ -1,5 +1,5 @@
 $(function() {
-	function AllMessagesHTML(message){
+	function buildMessageHTML(message){
         var api_message = (message.image) ? `<img src="${message.image}" >` :``;
 		var html = `
 		            <div class= "message__right--block--chat__box">
@@ -34,7 +34,7 @@ $(function() {
     })
     .always(function(new_message){
       $.each(new_message, function(i,new_message){
-        AllMessagesHTML(new_message);
+        buildMessageHTML(new_message);
       });
     });
   }
@@ -52,7 +52,7 @@ $(function() {
           contentType: false
       })
         .done(function(userSend_message){
-        	var html = AllMessagesHTML(userSend_message);
+        	var html = buildMessageHTML(userSend_message);
         	$('.messages').append(html)
         	$('#message_content').val('')
 	        $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight}, 'fast');
