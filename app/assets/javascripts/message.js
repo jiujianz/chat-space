@@ -15,9 +15,9 @@ $(function() {
 				    </div>`
 	    return html
 	}
-  $(function(){
-    setInterval(UpdateMessageDisplay, 5000);
-  });
+  // $(function(){
+  //   setInterval(UpdateMessageDisplay, 5000);
+  // });
   function UpdateMessageDisplay(){
     if($('.messages')[0]){
       var message_id = $('.messages:last').data('id');

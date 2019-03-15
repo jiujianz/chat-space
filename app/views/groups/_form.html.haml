@@ -15,7 +15,7 @@
       %label.chat-group-form__label{for:"chat_group_チャットメンバーを追加"} チャットメンバーを追加
     .chat-group-form__field--right
       .chat-group-form__search_clearfix
-        = f.text_field :name, class: 'chat-group-form__input', id: 'user-search-field', placeholder: "追加したいユーザー名を入力してください", type: "text"
+        %input.chat-group-form__input{class: 'chat-group-form__input', id: 'user-search-field', placeholder: "追加したいユーザー名を入力してください", type: "text"}
       #user-search-result
 
   .chat-group-form__field.clearfix
@@ -25,7 +25,6 @@
     .chat-group-form__field--right
       #chat-group-users
         .chat-group-user_clearfix#chat-group-user
-          = f.text_field :name, name: 'chat_group[user_ids][]', type: 'hidden',  value: current_user.id
           %p.chat-group-user
             = current_user.name
 
