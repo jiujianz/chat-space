@@ -30,7 +30,7 @@ function appendErrMsgToHTML(msg){
 	$("#user-search-field").on("keyup", function() {
 		input = $("#user-search-field").val()
 		if (input.length == 0) {
-           $("#user-search-result").empty();
+      $("#user-search-result").empty();
 
 		}else {
 			$.ajax({
@@ -57,7 +57,7 @@ function appendErrMsgToHTML(msg){
 	    }
 	});
 	$("#user-search-result").on("click",".chat-group-user__btn--add",function() {
-        var name = $("a").attr("data-user-name");
+    var name = $("a").attr("data-user-name");
         // 追加ボタンのhtmlからattrメソッドでnameを所得
 		var id = $("a").attr("data-user-id");
 		// 追加ボタンのhtmlからattrメソッドでidを所得

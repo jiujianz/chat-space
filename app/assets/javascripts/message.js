@@ -40,26 +40,32 @@ $(function() {
   }
 
 	$('#new_message').on('submit', function(e){
-		e.preventDefault();
-		  var formData = new FormData(this);
-	    var href = window.location.pathname
-	    $.ajax({
-	      url: href,
-	      type: "POST",
-	      data: formData,
-	      dataType: 'json',
-	      processData: false,
-          contentType: false
+	  e.preventDefault();
+		var formData = new FormData(this);
+    if ($('#message_content').val() !== ""){
+	    var href = window.location
+      $.ajax({
+        url: href,
+        type: "POST",
+        data: formData,
+        dataType: 'json',
+        processData: false,
+        contentType: false
       })
-        .done(function(userSend_message){
-        	var html = buildMessageHTML(userSend_message);
-        	$('.messages').append(html)
-        	$('#message_content').val('')
-	        $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight}, 'fast');
-        })
-        .fail(function(){
-        	alert('error');
-        })
-	  })
-
+      .done(function(userSend_message){
+        var html = buildMessageHTML(userSend_message);
+        $('.messages').append(html)
+        $('#message_content').val('')
+        $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight}, 'fast');
+      })
+      .fail(function(){
+        alert('error');
+      })
+      .always(() => {
+        $(".form__submit").removeAttr("disabled");
+      });
+    } else {
+      alert("メッセージを入力して下さい")
+    }
+  });
 })
