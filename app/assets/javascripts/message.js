@@ -2,7 +2,7 @@ $(function() {
 	function buildMessageHTML(message){
         var api_message = (message.image) ? `<img src="${message.image}" >` :``;
 		var html = `
-		            <div class= "message__right--block--chat__box">
+		            <div class= "message__right--block--chat__box" data-id=${message.id}>
 		              <div class= "message__right--block--chat__box__messages">
 			            <p class="the__messages">${message.user_name}
 			            </p><p class= "the__messages--info">${message.time}
@@ -19,22 +19,22 @@ $(function() {
     setInterval(UpdateMessageDisplay, 5000);
   });
   function UpdateMessageDisplay(){
-    if($('.messages')[0]){
-      var message_id = $('.messages:last').data('id');
+    if($('.message__right--block--chat__box')[0]){
+      var message_id = $('.message__right--block--chat__box').last().data('id');
+      console.log(message_id)
     } else {
       var message_id = 0
     }
     $.ajax({
       url: location.href,
-      type: 'GET',
+      type: "GET",
       data: { id: message_id },
       dataType: 'json',
-      processData: false,
-        contentType: false
     })
-    .always(function(new_message){
+    .done(function(new_message){
       $.each(new_message, function(i,new_message){
-        buildMessageHTML(new_message);
+        var html = buildMessageHTML(new_message);
+        $('.messages').append(html)
       });
     });
   }
